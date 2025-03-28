@@ -1,0 +1,10 @@
+[project]
+name = "myworld"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "django>=5.1.7",
+    "whitenoise>=6.9.0",
+]
