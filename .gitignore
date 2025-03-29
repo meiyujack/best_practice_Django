@@ -11,3 +11,6 @@ wheels/
 
 # db file
 db.sqlite3
+
+# database migrations
+migrations/
