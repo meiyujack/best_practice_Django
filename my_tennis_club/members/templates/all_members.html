@@ -6,12 +6,12 @@
 
 
 {% block content %}
-    <div class="mycard">
+    <div>
         <h1>Members</h1>
-            <ul>
+            <ol class="list-group list-group-numbered">
                 {% for x in mymembers %}
-                    <li onclick="window.location='details/{{x.slug}}'">{{ x.lastname }}{{ x.firstname }}</li>
+                    <li class="list-group-item list-group-item-action" onclick="window.location='details/{{x.slug}}'">{{ x.lastname }}{{ x.firstname }}</li>
                 {% endfor %}
-            </ul>
+            </ol>
     </div>
 {% endblock %}

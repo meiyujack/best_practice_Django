@@ -5,9 +5,13 @@
 {% endblock %}
 
 {% block content %}
-    <div class="mycard">
-        <h1>{{ mymember.lastname }}{{ mymember.firstname }}</h1>
-        <p>Phone {{ mymember.phone }}</p>
-        <p>Member since: {{ mymember.joined_date }}</p>
+    <div class="card m-5 bg-secondary" style="width: 500px;">
+        <div class="card-header text-white">
+            <h1 class="card-title">{{ mymember.lastname }}{{ mymember.firstname }}</h1>
+        </div>
+        <div class="card-body">    
+            <p class="card-text text-black-50">Phone {{ mymember.phone }}</p>
+            <p class="card-text">Member since: {{ mymember.joined_date }}</p>
+        </div>
     </div>
 {% endblock %}
