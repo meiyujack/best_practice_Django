@@ -14,3 +14,6 @@ db.sqlite3
 
 # database migrations
 migrations/
+
+# sensitive
+.env
