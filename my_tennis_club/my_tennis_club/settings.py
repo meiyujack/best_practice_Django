@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 from decouple import config
+from dj_database_url import parse as db_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,11 +24,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = config('DEBUG',default=False,cast=bool)
+TEMPLATE_DEBUG=DEBUG
 
 ALLOWED_HOSTS = ['*']
 
 SECRET_KEY=config('SECRET_KEY')
+USER=config('DB_USER')
+PASSWORD=config('DB_PASSWORD')
+HOST=config('DB_HOST')
+PORT=config('DB_PORT')
 
 # Application definition
 
@@ -78,14 +84,19 @@ WSGI_APPLICATION = 'my_tennis_club.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME':config('DB_NAME'),
-        'USER':config('DB_USER'),
-        'PASSWORD':config('DB_PASSWORD'),
-        'HOST':config('DB_HOST'),
-        'PORT':config('DB_PORT')
-    }
+    'default': config(
+        'DATABASE_URL',
+        default=f'sqlite:///{BASE_DIR}/db.sqlite3',
+        cast=db_url
+    )
+    # {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME':config('DB_NAME',default=f"{BASE_DIR}/db.sqlite3"),
+    #     'USER':config('DB_USER'),
+    #     'PASSWORD':config('DB_PASSWORD'),
+    #     'HOST':config('DB_HOST'),
+    #     'PORT':config('DB_PORT')
+    # }
 }
 
 
