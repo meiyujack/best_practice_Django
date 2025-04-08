@@ -84,19 +84,19 @@ WSGI_APPLICATION = 'my_tennis_club.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': config(
-        'DATABASE_URL',
-        default=f'sqlite:///{BASE_DIR}/db.sqlite3',
-        cast=db_url
-    )
-    # {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME':config('DB_NAME',default=f"{BASE_DIR}/db.sqlite3"),
-    #     'USER':config('DB_USER'),
-    #     'PASSWORD':config('DB_PASSWORD'),
-    #     'HOST':config('DB_HOST'),
-    #     'PORT':config('DB_PORT')
-    # }
+    # 'default': config(
+    #     'DATABASE_URL',
+    #     default=f'sqlite:///{BASE_DIR}/db.sqlite3',
+    #     cast=db_url
+    # )
+    'default':{
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME':config('DB_NAME'),
+        'USER':config('DB_USER'),
+        'PASSWORD':config('DB_PASSWORD'),
+        'HOST':config('DB_HOST'),
+        'PORT':config('DB_PORT')
+    }
 }
 
 
